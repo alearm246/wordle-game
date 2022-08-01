@@ -16,5 +16,5 @@ CORRECT_WRONG_POSITION = (2)
 WRONG = (3)
 
 
-def assign_logic(board, secretWord):
+def evaluate(board, secretWord):
 	pass

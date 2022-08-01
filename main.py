@@ -1,5 +1,5 @@
 from wordle_graphics import draw_board
-from wordle_logic import assign_logic
+from wordle_logic import evaluate
 
 print("wordle time!!!!")
 
@@ -20,3 +20,6 @@ UNSELECTED = (0)
 CORRECT_POSITION = (1)
 CORRECT_WRONG_POSITION = (2)
 WRONG = (3)
+
+
+#draw_board([['h','e','l','l','o'],[3,3,3,3,1]])
