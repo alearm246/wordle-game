@@ -1,10 +1,4 @@
-from wordle_graphics import draw_board
-from wordle_logic import assign_logic
-
-print("wordle time!!!!")
-
-BoardState = []
-
+# for printing the boardState
 
 #constants for use when decideing whether to look at letter or legality
 LETTER = (0)
@@ -20,3 +14,6 @@ UNSELECTED = (0)
 CORRECT_POSITION = (1)
 CORRECT_WRONG_POSITION = (2)
 WRONG = (3)
+
+def draw_board(board):
+	pass
