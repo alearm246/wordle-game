@@ -8,7 +8,7 @@ LEGALITY = (1)
 
 '''
 note that each boardState will be represented with a two item list with index
-0 and 1, 0 for the letter and 1 for wether or not its supposed to be there, acording
+0 and 1, 0 for the letter and 1 for whether or not it's supposed to be there, according
 to the below constants.
 '''
 #constants for use when deciding letter legality
