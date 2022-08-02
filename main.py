@@ -22,4 +22,4 @@ CORRECT_WRONG_POSITION = (2)
 WRONG = (3)
 
 
-#draw_board([][['h','e','l','l','o'],[3,3,3,3,1]]])
+#draw_board([[['h','e','l','l','o'],[3,3,3,3,1]]])
