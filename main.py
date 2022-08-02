@@ -1,5 +1,9 @@
 from wordle_graphics import draw_board
 from wordle_logic import evaluate
+from words import validWords
+from wordle_logic import isWordValid
+from wordle_logic import evaluate
+import random
 
 print("wordle time!!!!")
 
@@ -21,6 +25,53 @@ CORRECT_POSITION = (1)
 CORRECT_WRONG_POSITION = (2)
 WRONG = (3)
 
+WORD_LIST_LEN = (len(validWords))
+
+def play_wordle():
+
+    #s_word = validWords[int(random.randint(0, WORD_LIST_LEN-1))]
+    s_word = "motto".upper()
+
+    print("Welcome to Wordle! \nIn order to play, input a valid five letter word for each round until you either " \
+    + "guess the word or run out of guesses!" \
+    "\n☺ means the letter was in the word and in the right position." \
+    "\n? means the letter was in the word but in the wrong position." \
+    "\nX means the letter was not in the word.")
+
+    row = 1
+    endgame = False
+    guessed = False
+
+    draw_board(BoardState)
+
+    while row <=6 and not endgame:
+        guess = input("Input a valid word: ")
+        while not isWordValid(guess):
+            guess = input("Input a valid word: ")
+
+        guess = guess.upper()
+
+        evaluate(BoardState, guess, s_word)
+
+        draw_board(BoardState)
+
+        guessed = True
+
+        for i in BoardState[row-1][LEGALITY]:
+            if i != CORRECT_POSITION:
+                guessed = False
+                break
+        if guessed:
+            endgame = True
+
+        row += 1
+
+    if guessed:
+        print("Congratulations! You won in " + str(row-1) + " guesses!")
+    if not guessed:
+        print("word was: " + s_word)
+
+play_wordle()
 
 #draw_board([[['h','e','l','l','o'],[3,3,3,3,1]]])
 
