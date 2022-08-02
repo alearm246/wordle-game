@@ -20,15 +20,15 @@ def draw_board(board):
 	CORRECT_WRONG_POSITION : " ? ",\
 	CORRECT_POSITION : " ☺ ", \
 	UNSELECTED : " "}
-	for i in board:
+	for combo in board:
 		print("___ ___ ___ ___ ___")
 		line = ""
-		for char in board[LETTER]:
+		for char in combo[LETTER]:
 			line += str("|" + char + "|" + " ")
 		print(line)
 		line = ""
 		print("TTT TTT TTT TTT TTT")
-		for item in board[LEGALITY]:
+		for item in combo[LEGALITY]:
 			line+= str(symbolDict[item] + " ")
 		print(line)
 		line = ""
