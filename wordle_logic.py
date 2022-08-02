@@ -26,16 +26,29 @@ def evaluate(board, guess, secretWord):
 	board.append([list(guess),[0,0,0,0,0]])
 	boardIndex = board.index([list(guess),[0,0,0,0,0]])
 
+	correct_position = {}
+
 	for i, letter in enumerate(secretWord):
-		if guess[i] in secretWord and letter in guess[i]:
+		if guess[i] in secretWord and letter == guess[i]:
 			board[boardIndex][LEGALITY][i] = CORRECT_POSITION
+			if guess[i] in correct_position:
+				correct_position[board[boardIndex][LETTER][i]] += 1
+			else:
+				correct_position[board[boardIndex][LETTER][i]] = 1
 		elif guess[i] in secretWord:
-			board[boardIndex][LEGALITY][i] = CORRECT_WRONG_POSITION
+			if guess[i] in correct_position:
+				if correct_position[guess[i]] != 0:
+					board[boardIndex][LEGALITY][i] = UNSELECTED
+			else:
+				board[boardIndex][LEGALITY][i] = CORRECT_WRONG_POSITION
 		else:
 			board[boardIndex][LEGALITY][i] = WRONG
 
+	#print(board)
 
-# #evaluate([], "shoer", "shoer")
+
+
+# evaluate([], "shoer", "shoer")
 # evaluate([], "shoer", "trues")
 # evaluate([[['s', 'h', 'o', 'e', 'r'], [2, 2, 2, 1, 2]]], "hayer", "trues")
 # evaluate([[['s', 'h', 'o', 'e', 'r'], [2, 2, 2, 1, 2]], [['h', 'a', 'y', 'e', 'r'], [3, 3, 3, 1, 2]]], "trues", "trues")
