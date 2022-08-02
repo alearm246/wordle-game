@@ -23,3 +23,11 @@ WRONG = (3)
 
 
 #draw_board([[['h','e','l','l','o'],[3,3,3,3,1]]])
+
+# evaluate(BoardState, "shoer", "trues")
+# draw_board(BoardState)
+# evaluate(BoardState, "hayer", "trues")
+# draw_board(BoardState)
+# evaluate(BoardState, "trues", "trues")
+# draw_board(BoardState)
+#
