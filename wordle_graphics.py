@@ -32,7 +32,7 @@ def draw_board(board):
 			line+= str(symbolDict[item] + " ")
 		print(line)
 		line = ""
-
+	print("~~~~~~~~~~~~~~~~~~~~~~~")
 
 def color_board(board):
 	pass
