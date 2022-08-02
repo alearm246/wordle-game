@@ -20,16 +20,22 @@ def draw_board(board):
 	CORRECT_WRONG_POSITION : " ? ",\
 	CORRECT_POSITION : " ☺ ", \
 	UNSELECTED : " "}
-	for combo in board:
+	for i in range(6):
 		print("___ ___ ___ ___ ___")
 		line = ""
-		for char in combo[LETTER]:
-			line += str("|" + char + "|" + " ")
+		if(i < len(board)):
+			for char in board[i][LETTER]:
+				line += str("|" + char + "|" + " ")
+		else:
+			line = "| | | | | | | | | |"
 		print(line)
 		line = ""
 		print("TTT TTT TTT TTT TTT")
-		for item in combo[LEGALITY]:
-			line+= str(symbolDict[item] + " ")
+		if(i < len(board)):
+			for item in board[i][LEGALITY]:
+				line+= str(symbolDict[item] + " ")
+		else:
+			print()
 		print(line)
 		line = ""
 	print("~~~~~~~~~~~~~~~~~~~~~~~")
