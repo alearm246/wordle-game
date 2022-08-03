@@ -34,7 +34,7 @@ def play_wordle():
     #s_word = validWords[int(random.randint(0, WORD_LIST_LEN-1))]
     s_word = "egger".upper()
 
-    print("Welcome to Wordle! \nIn order to play, input a valid five letter word for each round until you either " \
+    print("Welcome to Wordle!! \nIn order to play, input a valid five letter word for each round until you either " \
     + "guess the word or run out of guesses!" \
     "\n☺ means the letter was in the word and in the right position." \
     "\n? means the letter was in the word but in the wrong position." \

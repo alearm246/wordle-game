@@ -71,11 +71,14 @@ def PopularityUpdate(words):
 				PopularityIndex[word] += LCDict[coolKey]
 				aDict[key] -= 1
 	print(PopularityIndex)
-def get_guess(board):
-	myDict = {}
-	index = 0
-	while(board[index][LEGALITY][0] != UNSELECTED):
-		for char in board[index][LETTER]:
-			if (char not in myDict):
-				myDict[char] = 0
-			myDict[char] += 1
+# def get_guess(board):
+# 	myDict = {}
+# 	index = 0
+# 	while(board[index][LEGALITY][0] != UNSELECTED):
+# 		for char in board[index][LETTER]:
+# 			if (char not in myDict):
+# 				myDict[char] = 0
+# 			myDict[char] += 1
+
+def deleteWords(board,words):
+	

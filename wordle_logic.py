@@ -27,22 +27,41 @@ def evaluate(board, guess, secretWord):
 	boardIndex = board.index([list(guess),[0,0,0,0,0]])
 
 	correct_position = {}
+	incorrect_position = {}
+
+	word_dict = {}
+
+	for i in secretWord:
+		if i in word_dict.keys():
+			word_dict[i] += 1
+		else:
+			word_dict[i] = 1
 
 	for i, letter in enumerate(secretWord):
-		if guess[i] in secretWord and letter == guess[i]:
+		if guess[i] in secretWord and letter == guess[i] and word_dict[guess[i]] > 0:
 			board[boardIndex][LEGALITY][i] = CORRECT_POSITION
-			if guess[i] in correct_position:
-				correct_position[board[boardIndex][LETTER][i]] += 1
-			else:
-				correct_position[board[boardIndex][LETTER][i]] = 1
+
+			word_dict[guess[i]] -= 1
+
+	for i, letter in enumerate(secretWord):
+		if board[boardIndex][LEGALITY][i] == CORRECT_POSITION:
+			continue
 		elif guess[i] in secretWord:
-			if guess[i] in correct_position:
-				if correct_position[guess[i]] != 0:
-					board[boardIndex][LEGALITY][i] = WRONG
-			else:
+			print(guess[i], word_dict[guess[i]])
+			if guess[i] in secretWord and word_dict[guess[i]] > 0:
 				board[boardIndex][LEGALITY][i] = CORRECT_WRONG_POSITION
+				word_dict[guess[i]] -= 1
+				print(guess[i], word_dict[guess[i]])
+
+
+	for i, letter in enumerate(secretWord):
+		if board[boardIndex][LEGALITY][i] == CORRECT_POSITION or board[boardIndex][LEGALITY][i] == CORRECT_WRONG_POSITION:
+			continue
 		else:
 			board[boardIndex][LEGALITY][i] = WRONG
+
+
+
 
 
 # evaluate(BoardState, "trues", "trues")
