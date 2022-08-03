@@ -3,6 +3,7 @@ from wordle_logic import evaluate
 from words import validWords
 from wordle_logic import isWordValid
 from wordle_logic import evaluate
+from AI import *
 import random
 
 print("wordle time!!!!")
@@ -27,10 +28,11 @@ WRONG = (3)
 
 WORD_LIST_LEN = (len(validWords))
 
+validWords = ["toile","zombi","dewed","hooky", "alkyl","ixnay","dovey","holey","cubar","amyls","podia","chino","fatwa","egger","hempy","crink","moots","atilt","jukes","ender"]
 def play_wordle():
 
     #s_word = validWords[int(random.randint(0, WORD_LIST_LEN-1))]
-    s_word = "motto".upper()
+    s_word = "egger".upper()
 
     print("Welcome to Wordle! \nIn order to play, input a valid five letter word for each round until you either " \
     + "guess the word or run out of guesses!" \
@@ -47,8 +49,14 @@ def play_wordle():
     while row <=6 and not endgame:
         guess = input("Input a valid word: ")
         while not isWordValid(guess):
+            if (guess == "LC"):
+                AI_Letter_Count(validWords)
+            elif(guess == "popIndex"):
+                PopularityUpdate(validWords)
+            elif(guess == "delete:"):
+                target = input("which word to delete?")
+                validWords.remove(target)
             guess = input("Input a valid word: ")
-
         guess = guess.upper()
 
         evaluate(BoardState, guess, s_word)
