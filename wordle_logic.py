@@ -47,11 +47,11 @@ def evaluate(board, guess, secretWord):
 		if board[boardIndex][LEGALITY][i] == CORRECT_POSITION:
 			continue
 		elif guess[i] in secretWord:
-			print(guess[i], word_dict[guess[i]])
+			#print(guess[i], word_dict[guess[i]])
 			if guess[i] in secretWord and word_dict[guess[i]] > 0:
 				board[boardIndex][LEGALITY][i] = CORRECT_WRONG_POSITION
 				word_dict[guess[i]] -= 1
-				print(guess[i], word_dict[guess[i]])
+				#print(guess[i], word_dict[guess[i]])
 
 
 	for i, letter in enumerate(secretWord):
