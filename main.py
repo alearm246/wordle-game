@@ -26,13 +26,14 @@ CORRECT_POSITION = (1)
 CORRECT_WRONG_POSITION = (2)
 WRONG = (3)
 
-WORD_LIST_LEN = (len(validWords))
 
-validWords = ["toile","zombi","dewed","hooky", "alkyl","ixnay","dovey","holey","cubar","amyls","podia","chino","fatwa","egger","hempy","crink","moots","atilt","jukes","ender"]
+#validWords = ["toile","zombi","dewed","hooky", "alkyl","ixnay","dovey","holey","cubar","amyls","podia","chino","fatwa","egger","hempy","crink","moots","atilt","jukes","ender"]
+
+WORD_LIST_LEN = (len(validWords))
 def play_wordle():
 
-    #s_word = validWords[int(random.randint(0, WORD_LIST_LEN-1))]
-    s_word = "egger".upper()
+    s_word = validWords[int(random.randint(0, WORD_LIST_LEN-1))].upper()
+    #s_word = "tzars".upper()
 
     print("Welcome to Wordle!! \nIn order to play, input a valid five letter word for each round until you either " \
     + "guess the word or run out of guesses!" \
@@ -46,9 +47,16 @@ def play_wordle():
 
     draw_board(BoardState)
 
+    words = validWords
+
     while row <=6 and not endgame:
-        guess = input("Input a valid word: ")
+        #guess = input("Input a valid word: ")
+
+
+        words, guess = get_guess(BoardState, words)
         while not isWordValid(guess):
+            print(type(guess))
+            print("^")
             if (guess == "LC"):
                 AI_Letter_Count(validWords)
             elif(guess == "popIndex"):
@@ -56,6 +64,7 @@ def play_wordle():
             elif(guess == "delete:"):
                 target = input("which word to delete?")
                 validWords.remove(target)
+            print(s_word)
             guess = input("Input a valid word: ")
         guess = guess.upper()
 
@@ -77,6 +86,7 @@ def play_wordle():
     if guessed:
         print("Congratulations! You won in " + str(row-1) + " guesses!")
     if not guessed:
+        print(words)
         print("word was: " + s_word)
 
 play_wordle()

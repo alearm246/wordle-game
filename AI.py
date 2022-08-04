@@ -95,6 +95,8 @@ def deleteWords(board,words):
 	while(i < len(words)):
 		dead = False
 		word = words[i]
+		if word == "dovey":
+			print("dovey was checked")
 		wordDict = {}
 		for char in word:
 			char = char.lower()
@@ -104,30 +106,57 @@ def deleteWords(board,words):
 		for key in myDict:
 			if key not in wordDict:
 				wordDict[key] = 0
-			if (myDict[key] != wordDict[key]):
-				dead = True
-				break
+			if(myDict[key] >=1):
+				if (myDict[key] > wordDict[key]):
+					dead = True
+					break
+			elif(myDict[key] == 0):
+				if(wordDict[key] != 0):
+					dead = True
+					break
 
 		print(myDict, wordDict, dead)
+
 		if dead:
+			# if word == "TZARS":
+			# 	# print("HERE!")
+			# 	# l = 0
+			# 	# while l>-1:
+			# 	# 	continue
 			print("non-matching: " + word)
 			words.remove(word)
 			continue
 		else:
+			word = word.upper()
+			print(dead)
 			for n in range(len(wordArr)):
 				if(legal[n] == CORRECT_POSITION):
-					if(wordArr[n] == word[n]):
+					if(wordArr[n] != word[n]):
+						print("guess: ", wordArr , " current word: " , word , " n value: " , n)
 						dead = True
 						break
 				elif(legal[n] == CORRECT_WRONG_POSITION):
 					if(wordArr[n] == word[n]):
 						dead = True
 						break
+
+			if(wordArr == list(word)):
+				print("other")
+				dead = True
+				break
 			if(dead == True):
+				# if word == "TZARS":
+				# 	print("HERE!")
+				# 	l = 0
+				# 	while l>-1:
+				# 		continue
 				print(word)
-				words.remove(i)
+				words.remove(word)
 				continue
 			else:
+				# if word == "TZARS" and board != []:
+				# 	print("HERE!")
+				# 	#input("Hey, listen!")
 				i+=1
 				result.append(word)
 	return result
